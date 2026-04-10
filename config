@@ -41,6 +41,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -198,23 +202,23 @@ for_window [class=".*"] border pixel 1
 
 
 # Wallpaper + PyWal
-set $wallpaper1 /home/lionelvalentine/Pictures/walls/abstract/a_painting_of_a_man_with_a_face_on_his_head.png
+set $wallpaper1 /home/hoaxsnowden/Pictures/walls/abstract/a_painting_of_a_man_with_a_face_on_his_head.png
 
-set $wallpaper2 /home/lionelvalentine/Pictures/walls/anime/a_cartoon_of_a_girl_in_a_uniform.png
+set $wallpaper2 /home/hoaxsnowden/Pictures/walls/anime/a_cartoon_of_a_girl_in_a_uniform.png
 
-set $wallpaper3 /home/lionelvalentine/Pictures/walls/anime/a_cartoon_of_a_girl_sitting_on_a_porch_in_the_rain.png
+set $wallpaper3 /home/hoaxsnowden/Pictures/walls/anime/a_cartoon_of_a_girl_sitting_on_a_porch_in_the_rain.png
 
-set $wallpaper3 /home/lionelvalentine/Pictures/walls/digital/a_man_standing_in_a_dark_place_with_a_large_circle_of_light.jpg
+set $wallpaper4 /home/hoaxsnowden/Pictures/walls/digital/a_man_standing_in_a_dark_place_with_a_large_circle_of_light.jpg
 
-set $wallpaper4 /home/lionelvalentine/Pictures/walls/nord/a_car_on_a_street.png
+set $wallpaper5 /home/hoaxsnowden/Pictures/walls/nord/a_car_on_a_street.png
 
 
-exec_always --no-startup-id feh --bg-scale $wallpaper1
-exec_always --no-startup-id wal -i $wallpaper1
-exec_always --no-startup-id ~/.config/polybar/docky/scripts/pywal.sh $wallpaper1
+exec_always --no-startup-id feh --bg-scale $wallpaper5
+exec_always --no-startup-id wal -i $wallpaper5
+exec_always --no-startup-id ~/.config/polybar/docky/scripts/pywal.sh $wallpaper5
 
 # Walogram
-exec_always --no-startup-id walogram -s -i $wallpaper1
+exec_always --no-startup-id walogram -s -i $wallpaper5
 
 # Py-wal Discord
 # exec_always --no-startup-id pywal-discord -p $wallpaper3
@@ -227,7 +231,9 @@ exec_always --no-startup-id ~/.config/polybar/$theme/launch.sh
 bindsym $mod+d exec --no-startup-id ~/.config/polybar/docky/scripts/launcher.sh
 
 # Screenshot
-bindsym Print exec --no-startup-id flameshot gui -c
+bindsym Print exec --no-startup-id flameshot gui
+
+bindsym $mod+shift+s  exec --no-startup-id flameshot gui -c
 
 # Remove Screen Timeout
 exec --no-startup-id xset s off
@@ -236,8 +242,6 @@ exec --no-startup-id xset s noblank
 
 # Compositor (Picom)
 exec_always picom --config ~/.config/picom/picom.conf
-
-
 
 
 # Gaps
